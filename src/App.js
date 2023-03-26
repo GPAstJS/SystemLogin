@@ -117,12 +117,19 @@ export default function App() {
             <p
               style={{
                 color: "#000",
-                marginRight: '5px'
+                margin: '5px 5px 0px 0px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               Not a member?
             </p>
-            <a href="/">Sign Up</a>
+            <a style={{
+              margin: '5px 5px 0px 0px',
+              color: "#1565C0",
+              textDecoration: "none"
+            }} href="/">Sign Up</a>
           </Link>
         </div>
       </div>

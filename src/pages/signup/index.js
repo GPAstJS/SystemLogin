@@ -129,10 +129,10 @@ const SignUp = () => {
           <p
             style={{
               color: "#000",
-              margin: '5px 0px 0px 0px',
+              margin: '5px 0px px 0px',
               TextDecoraton: "none",
               width: '320px',
-              textAlign: "right"
+              textAlign: "right",
             }}
           >
             Already registered?
@@ -140,6 +140,7 @@ const SignUp = () => {
               href=""
               style={{
                 color: "#1565C0",
+                margin: '5px 5px 0px 5px',
                 textDecoration: "none",
               }}
             >
