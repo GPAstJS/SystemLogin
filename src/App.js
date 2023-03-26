@@ -1,28 +1,21 @@
 import { TextField, Button } from "@mui/material";
 import { Link, redirect } from "react-router-dom";
-import { initializeApp } from "firebase/app";
+import { db, userCollectionRef} from './firebase'
 import { useEffect, useState } from "react";
-import { getFirestore, getDocs, collection, docs } from "firebase/firestore";
+import { getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-
-const firebaseApp = initializeApp({
-  apiKey: "AIzaSyD8tG5SPh2t6S4zgmu7I6LXL6g5jACKaws",
-  authDomain: "loginsystem-f58e7.firebaseapp.com",
-  projectId: "loginsystem-f58e7",
-});
-
+import Header from './components/header/index'
+import './App.css'
 export default function App() {
   const [users, setUsers] = useState([]);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const db = getFirestore(firebaseApp);
-  const userCollectionRef = collection(db, "accounts");
-
   useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(userCollectionRef);
       setUsers(data.docs.map((e) => ({ ...e.data(), id: e.id}  )));
+      console.log(data.docs.map((e) => ({...e.data(), id: e.id})))
     };
     getUsers();
   }, []);
@@ -56,10 +49,19 @@ export default function App() {
           width: "1440px",
           height: "100vh",
           display: "flex",
+          flexDirection: 'column',
           alignItems: "center",
-          justifyContent: "center",
         }}
       >
+        <Header/>
+
+        <div className="auth" style={{
+          height: '600px',
+          display: 'flex',
+          alignItems: 'center',
+        }}>
+
+
         <div
           className="user-auth"
           style={{
@@ -68,7 +70,9 @@ export default function App() {
             flexDirection: "column",
           }}
         >
-          <h1>Login</h1>
+          <h1 style={{
+            padding: '20px'
+          }}>Login</h1>
           <TextField
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -123,5 +127,6 @@ export default function App() {
         </div>
       </div>
     </div>
+    </div>
   );
-}
+} 

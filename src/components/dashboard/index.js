@@ -1,24 +1,119 @@
-import ExerciseIcon from '../../assets/images/icon-exercise.svg' 
-import PlayIcon from '../../assets/images/icon-play.svg' 
-import SelfcareIcon from '../../assets/images/icon-self-care.svg' 
-import SocialIcon from '../../assets/images/icon-social.svg' 
-import StudyIcon from '../../assets/images/icon-study.svg' 
-import WorkIcon from '../../assets/images/icon-work.svg' 
+const Dashboard = ({
+  title,
+  currentDailyHours,
+  previousDailyHours,
+  currentWeeklyHours,
+  previousWeeklyHours,
+  currentMonthlyHours,
+  previousMonthlyHours,
+  background,
+  image,
+  imageAlt,
+}) => {
+  return (
+    <div
+      class="container-img-div"
+      style={{
+        display: "flex",
+        margin: '25px', 
+        flexDirection: "column",
+        justifyContent: "center",
+        width: "220px",
+        height: '189px',
+        borderRadius: "15px",
+        background: background,
+      }}
+    >
+      <div
+        class="img-div"
+        style={{
+          height: "41px",
+          borderBottom: "none",
+          borderTopLeftRadius: "15px",
+          borderTopRightRadius: "15px",
+        }}
+      >
+        <img
+          src={image}
+          alt={imageAlt}
+          style={{
+            float: "right",
+            height: "65px",
+            marginRight: "10px",
+          }}
+        />
+      </div>
 
-const Dashboard = () => {
-    return (
-        <div className="user-stats">
-            <div className="field">
-
-            </div>
-            <div className="field-data">
-                <div className="field-title"></div>
-                <div className="info">
-
-                </div>
-            </div>
+      <div
+        class="container-title-content"
+        style={{
+          display: "flex",
+          background: "var(--dark-blue)",
+          flexDirection: "column",
+          borderRadius: "15px",
+          justifyContent: "space-between",
+          height: "150px",
+        }}
+      >
+        <div
+          class="title-menu"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "15px",
+          }}
+        >
+          <p
+            class="dashboard-title"
+            style={{
+              color: "#fff",
+            }}
+          >
+            {title}
+          </p>
+          <button
+            class="menu-btn"
+            style={{
+              background: "none",
+              border: "none",
+              color: "#fff",
+            }}
+          >
+            ...
+          </button>
         </div>
-    )
-}
 
-export default Dashboard
+        <div
+          class="content"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            padding: "15px",
+          }}
+        >
+          <p
+            class="timeframe-time"
+            style={{
+              color: "#fff",
+              fontSize: "30px",
+            }}
+          >
+            {currentWeeklyHours}hrs
+          </p>
+          <p
+            class="previous-time"
+            style={{
+              color: "#fff",
+            }}
+          >
+            Previous: {previousWeeklyHours}hrs
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;
